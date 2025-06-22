@@ -29,9 +29,22 @@
 		3AA075612E07BB1700540043 /* WebbingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebbingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3AA075B12E07CDD900540043 /* Exceptions for "Webbing" folder in "Webbing" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3AA075462E07BB1500540043 /* Webbing */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3AA075492E07BB1500540043 /* Webbing */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3AA075B12E07CDD900540043 /* Exceptions for "Webbing" folder in "Webbing" target */,
+			);
 			path = Webbing;
 			sourceTree = "<group>";
 		};
@@ -402,6 +415,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Webbing/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "“Webbing uses Apple‑Events internally to deliver global hotkeys.”";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -430,6 +445,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Webbing/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "“Webbing uses Apple‑Events internally to deliver global hotkeys.”";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
