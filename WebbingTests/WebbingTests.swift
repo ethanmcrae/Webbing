@@ -26,11 +26,11 @@ final class WebbingTests: XCTestCase {
   func testIndexCycling() throws {
     let hk = HotkeyManager(); let store = ClipboardStore(); let fakeMenu = MenuBarController(store: store, hotkeys: hk)
     hk.configure(store: store, menuBar: fakeMenu)
-    hk.perform("prev") // custom test hook
+    hk.testHandle(.prev)
     XCTAssertEqual(hk.currentIndex, 9)
-    hk.perform("next")
+    hk.testHandle(.next)
     XCTAssertEqual(hk.currentIndex, 0)
-    hk.perform("reset")
+    hk.testHandle(.reset)
     XCTAssertEqual(hk.currentIndex, 0)
   }
 }
