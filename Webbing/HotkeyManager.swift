@@ -9,7 +9,7 @@ final class HotkeyManager {
   private weak var store: ClipboardStore?
   private weak var menuBar: MenuBarController?
   
-  private var currentIndex = 0 { didSet { menuBar?.flash(index: currentIndex) } }
+  internal(set) var currentIndex = 0 { didSet { menuBar?.flash(index: currentIndex) } }
   
   // MARK: ‑ Setup
   func configure(store: ClipboardStore, menuBar: MenuBarController) {
@@ -99,3 +99,12 @@ extension String {
     return result
   }
 }
+
+#if DEBUG
+extension HotkeyManager {
+  /// Test helper to invoke actions directly without hotkeys.
+  func testHandle(_ action: Action) {
+    handle(action)
+  }
+}
+#endif
