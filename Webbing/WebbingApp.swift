@@ -14,6 +14,10 @@ struct WebbingApp: App {
   @StateObject var store = ClipboardStore()
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   
+  init() {
+    AppDelegate.sharedStore = store
+  }
+  
   var body: some Scene {
     Settings {
       SettingsView()

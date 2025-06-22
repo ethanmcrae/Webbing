@@ -31,22 +31,16 @@ final class MenuBarController {
     }
   }
   
-  func showPopup(mode: PopupMode) {
-    guard let iconFrame = statusItem.button?.window?.frame else { return }
-    let view = PopupView(mode: mode) { [weak self] key in
-      self?.popover.performClose(nil)
-      Task { @MainActor in
-        self?.handle(mode: mode, key: key)
-      }
-    }
-    let hosting = NSHostingController(rootView: view)
-    let w = NSWindow(contentViewController: hosting)
-    w.level = .floating
-    w.isOpaque = false
-    w.backgroundColor = .clear
-    w.makeKeyAndOrderFront(nil)
-    w.setFrameOrigin(NSPoint(x: iconFrame.midX - 60, y: iconFrame.maxY - 4))
-    popupWindow = w
+  func flash(index: Int) {
+    let hud = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 80, height: 80),
+                      styleMask: .borderless, backing: .buffered, defer: false)
+    hud.level = .floating
+    hud.isOpaque = false
+    hud.backgroundColor = .clear
+    hud.center()
+    hud.contentView = NSHostingView(rootView: HUDView(number: index))
+    hud.makeKeyAndOrderFront(nil)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { hud.close() }
   }
   
   @MainActor private func handle(mode: PopupMode, key: Int) {

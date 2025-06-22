@@ -22,4 +22,15 @@ final class WebbingTests: XCTestCase {
     store.cleanseOlderThan24h()
     XCTAssertNil(store.content(for: 2))
   }
+  
+  func testIndexCycling() throws {
+    let hk = HotkeyManager(); let store = ClipboardStore(); let fakeMenu = MenuBarController(store: store, hotkeys: hk)
+    hk.configure(store: store, menuBar: fakeMenu)
+    hk.perform("prev") // custom test hook
+    XCTAssertEqual(hk.currentIndex, 9)
+    hk.perform("next")
+    XCTAssertEqual(hk.currentIndex, 0)
+    hk.perform("reset")
+    XCTAssertEqual(hk.currentIndex, 0)
+  }
 }
